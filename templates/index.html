@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+</head>
+<body>
+    <h1>Welcome to PassGen</h1>
+    <form action="/generate_password" method="post">
+        <label for="num_alpha">Number of Alphabets:</label>
+        <input type="number" name="num_alpha" required><br>
+
+        <label for="num_num">Number of Numbers:</label>
+        <input type="number" name="num_num" required><br>
+
+        <label for="num_symbols">Number of Symbols:</label>
+        <input type="number" name="num_symbols" required><br>
+
+        <button type="submit">Generate Password</button>
+    </form>
+
+    {% if password %}
+        <h2>Your Generated Password:</h2>
+        <p>{{ password }}</p>
+    {% endif %}
+</body>
+</html>
