@@ -14,7 +14,7 @@ PassGenWeb is a web application powered by Flask, a Python web framework, design
 ### Getting Started:
 To run PassGenWeb locally:
 1. Install Flask: `pip install Flask`
-2. Run the application: `python app.py`
+2. Run the application: `python main.py`
 3. Open your web browser and navigate to `http://127.0.0.1:5000/`
 
 ### Contribution:
