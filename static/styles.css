@@ -1,11 +1,25 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header-section {
+    background-color: #3498db; /* Blue color for header */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 20px;
+}
+
+.input-section {
+    background-color: #2ecc71; /* Green color for input section */
+    flex-grow: 1; /* Take up remaining vertical space */
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
 }
 
 .container {
@@ -14,8 +28,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-top: 20px; /* Adjust as needed */
 }
 
+/* Common Styles */
 h1 {
     color: #333;
 }
@@ -60,4 +76,16 @@ p {
     font-size: 1.2em;
     color: #555;
     margin-bottom: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 100%; /* Make the container full width on smaller screens */
+        margin-top: 10px; /* Adjust as needed */
+    }
+
+    form {
+        max-width: 100%; /* Make the form full width on smaller screens */
+    }
 }
