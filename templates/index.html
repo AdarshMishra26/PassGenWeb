@@ -12,23 +12,43 @@
     </div>
 
     <div class="input-section">
-        <form action="/generate_password" method="post">
-                <label for="num_alpha">Number of Alphabets:</label>
-                <input type="number" name="num_alpha" required><br>
-        
-                <label for="num_num">Number of Numbers:</label>
-                <input type="number" name="num_num" required><br>
-        
-                <label for="num_symbols">Number of Symbols:</label>
-                <input type="number" name="num_symbols" required><br>
-        
-                <button type="submit">Generate Password</button>
-                </form>
+        <form id="passwordForm" action="/generate_password" method="post">
+            <label for="num_alpha">Number of Alphabets:</label>
+            <input type="number" name="num_alpha" required><br>
+
+            <label for="num_num">Number of Numbers:</label>
+            <input type="number" name="num_num" required><br>
+
+            <label for="num_symbols">Number of Symbols:</label>
+            <input type="number" name="num_symbols" required><br>
+
+            <button type="submit" onclick="copyPassword()">Generate Password</button>
+        </form>
 
         {% if password %}
-            <h2>Your Generated Password:</h2>
-            <p>{{ password }}</p>
+            <div class="password-container">
+                <h2>Your Generated Password:</h2>
+                <p id="generatedPassword">{{ password }}</p>
+                <button onclick="copyPassword()">Copy Password</button>
+            </div>
         {% endif %}
     </div>
+
+    <script>
+        function copyPassword() {
+            const passwordField = document.getElementById('generatedPassword');
+            const passwordText = passwordField.innerText;
+
+            const tempInput = document.createElement('input');
+            tempInput.value = passwordText;
+
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            alert('Password copied to clipboard!');
+        }
+    </script>
 </body>
 </html>
