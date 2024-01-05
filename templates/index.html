@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#password-input").on('input', function() {
+                updatePasswordStrength($(this).val().length);
+            });
+
+            function updatePasswordStrength(length) {
+                var strength = "";
+                if (length < 8) {
+                    strength = "Weak";
+                } else if (length < 12) {
+                    strength = "Moderate";
+                } else {
+                    strength = "Strong";
+                }
+
+                $("#password-strength").text("Password Strength: " + strength);
+            }
+        });
+
+        function copyPassword() {
+            const passwordField = document.getElementById('generatedPassword');
+            const passwordText = passwordField.innerText;
+
+            const tempInput = document.createElement('input');
+            tempInput.value = passwordText;
+
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            alert('Password copied to clipboard!');
+        }
+    </script>
 </head>
 <body>
     <div class="header-section">
@@ -30,25 +66,9 @@
                 <h2>Your Generated Password:</h2>
                 <p id="generatedPassword">{{ password }}</p>
                 <button onclick="copyPassword()">Copy Password</button>
+                <p id="password-strength">Password Strength: Weak</p>
             </div>
         {% endif %}
     </div>
-
-    <script>
-        function copyPassword() {
-            const passwordField = document.getElementById('generatedPassword');
-            const passwordText = passwordField.innerText;
-
-            const tempInput = document.createElement('input');
-            tempInput.value = passwordText;
-
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-
-            alert('Password copied to clipboard!');
-        }
-    </script>
 </body>
 </html>
