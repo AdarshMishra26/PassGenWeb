@@ -14,11 +14,13 @@
 
             function updatePasswordStrength(length) {
                 var strength = "";
-                if (length < 8) {
+                if (length <= 3) {
                     strength = "Weak";
-                } else if (length < 12) {
+                } 
+                else if (length <= 6) {
                     strength = "Moderate";
-                } else {
+                } 
+                else {
                     strength = "Strong";
                 }
 
