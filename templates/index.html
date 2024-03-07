@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f6ad55, #f687b3);
+        }
+        .header-section {
+            background: linear-gradient(135deg, #feb2b2, #fecaca);
+        }
+        .input-section {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Mobile Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            .max-w-md {
+                max-width: 100%;
+            }
+            .input-section {
+                padding: 20px;
+            }
+        }
+    </style>
     <script>
+        
         $(document).ready(function() {
             $("#password-input").on('input', function() {
                 updatePasswordStrength($(this).val().length);
@@ -42,33 +64,34 @@
 
             alert('Password copied to clipboard!');
         }
+    
     </script>
 </head>
 <body>
-    <div class="header-section">
-        <h1>Welcome to PassGen</h1>
+    <div class="header-section py-4">
+        <h1 class="text-white text-center text-3xl font-bold">Welcome to PassGen</h1>
     </div>
 
-    <div class="input-section">
+    <div class="input-section max-w-md mx-auto mt-8 p-6 bg-white shadow-md rounded-lg">
         <form id="passwordForm" action="/generate_password" method="post">
-            <label for="num_alpha">Number of Alphabets:</label>
-            <input type="number" name="num_alpha" required><br>
+            <label for="length" class="block text-gray-700 mb-2">Password Length:</label>
+            <input type="number" name="length" id="length" required class="w-full px-3 py-2 border rounded-md mb-4" min="1">
 
-            <label for="num_num">Number of Numbers:</label>
-            <input type="number" name="num_num" required><br>
+            <label class="block text-gray-700 mb-2">Include:</label>
+            <input type="checkbox" name="uppercase" id="uppercase" class="mr-1"> Uppercase Letters
+            <input type="checkbox" name="lowercase" id="lowercase" class="mr-1 ml-4"> Lowercase Letters
+            <input type="checkbox" name="numbers" id="numbers" class="mr-1 ml-4"> Numbers
+            <input type="checkbox" name="symbols" id="symbols" class="mr-1 ml-4"> Symbols
 
-            <label for="num_symbols">Number of Symbols:</label>
-            <input type="number" name="num_symbols" required><br>
-
-            <button type="submit" onclick="copyPassword()">Generate Password</button>
+            <button type="submit" onclick="copyPassword()" class="w-full bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600 mt-4">Generate Password</button>
         </form>
 
         {% if password %}
-            <div class="password-container">
-                <h2>Your Generated Password:</h2>
-                <p id="generatedPassword">{{ password }}</p>
-                <button onclick="copyPassword()">Copy Password</button>
-                <p id="password-strength">Password Strength: Weak</p>
+            <div class="password-container mt-6">
+                <h2 class="text-xl font-semibold mb-2">Your Generated Password:</h2>
+                <p id="generatedPassword" class="text-gray-800 text-lg mb-4">{{ password }}</p>
+                <button onclick="copyPassword()" class="bg-pink-500 text-white py-2 px-4 rounded-md hover:bg-pink-600">Copy Password</button>
+                <p id="password-strength" class="text-sm text-gray-600 mt-2">Password Strength: Weak</p>
             </div>
         {% endif %}
     </div>
