@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <title>FitTrack</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <div class="fixed top-0 w-full bg-white shadow-lg py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="FitTrack Logo" class="h-12 mr-2">
+            <span class="text-gray-800 font-semibold text-lg">FitTrack</span>
+        </div>
+        <div class="space-x-4">
+            <a href="login" class="text-gray-800 font-medium hover:text-gray-600">Login</a>
+            <a href="signup" class="text-gray-800 font-medium hover:text-gray-600">Sign Up</a>
+            <a href="developers" class="text-white font-medium hover:text-gray-600 bg-indigo-600 py-2 px-4 rounded">Developer</a>
+        </div>
+    </div>
+    <div class="container mx-auto mt-20 flex items-center">
+        <div class="w-1/2">
+            <h1 class="text-4xl font-semibold text-gray-800 mb-4">Transform Your Health with FitTrack</h1>
+            <p class="text-gray-700 text-lg">FitTrack is your ultimate health partner, providing personalized recommendations, health dashboard, and activity tracking to help you achieve your fitness goals.</p>
+        </div>
+        <div class="w-1/2">
+            <img src="{{ url_for('static', filename='img1.png') }}" alt="FitTrack Image" class="w-full">
+        </div>
+    </div>
+    <div class="container mx-auto mt-20">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-8">Our Services</h2>
+        <div class="grid grid-cols-3 gap-8">
+            <div class="bg-gray-100 p-6 rounded-lg text-center">
+                <img src="{{ url_for('static', filename='img2.png') }}" alt="Activity Tracking" class="mx-auto mb-4">
+                <h3 class="text-xl font-semibold mb-4">Activity Tracking</h3>
+                <p class="text-gray-700">Our activity tracking feature allows you to easily monitor your exercise routine and stay on top of your fitness goals with personalized recommendations and progress.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg text-center">
+                <img src="{{ url_for('static', filename='img3.png') }}" alt="Health Dashboard" class="mx-auto mb-4">
+                <h3 class="text-xl font-semibold mb-4">Health Dashboard</h3>
+                <p class="text-gray-700">Our health dashboard feature provides a comprehensive overview of your health data, including exercise routine, calorie intake, and sleep patterns, with personalized insights and recommendations.</p>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-lg text-center">
+                <img src="{{ url_for('static', filename='img4.png') }}" alt="Personalized Recommendations" class="mx-auto mb-4">
+                <h3 class="text-xl font-semibold mb-4">Personalized Recommendations</h3>
+                <p class="text-gray-700">Get customized health advice tailored to your unique needs and preferences with our personalized recommendations feature.</p>
+            </div>
+        </div>
+        <div class="mt-16 mb-8 border-b border-gray-300 text-center">
+            <span class="text-gray-500">Features and Benefits</span>
+        </div>
+        <div class="flex justify-between">
+            <div class="w-1/3">
+                <h3 class="text-xl font-semibold mb-4">Features</h3>
+                <ul class="list-disc text-gray-700">
+                    <li>Personalized Recommendations</li>
+                    <li>Health Dashboard</li>
+                    <li>Activity Tracking</li>
+                    <li>Calorie Intake Monitoring</li>
+                    <li>Customized Fitness Plans</li>
+                </ul>
+            </div>
+            <div class="w-1/3">
+                <h3 class="text-xl font-semibold mb-4">Benefits</h3>
+                <ul class="list-disc text-gray-700">
+                    <li>Improved Fitness</li>
+                    <li>Accountability and Motivation</li>
+                    <li>Comprehensive Health Tracking</li>
+                    <li>Personalized Fitness Plans</li>
+                    <li>Easy to Use and Accessible Anytime, Anywhere</li>
+                </ul>
+            </div>
+            <div class="w-1/3">
+                <img src="{{ url_for('static', filename='img5.png') }}" alt="Benefits" class="mx-auto">
+            </div>
+        </div>
+    </div>
+    <!-- Footer section -->
+    <footer class="bg-gray-200 py-4 text-center">
+        <p class="text-gray-600">&copy; 2024 Fit-Track. All rights reserved.</p>
+    </footer>
+</body>
+</html>
